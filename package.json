@@ -1,7 +1,10 @@
 {
-  "name": "novnc-audio-plugin",
+  "name": "@nagamuslim/novnc-audio-plugin",
   "version": "1.0.0",
   "description": "A robust, dependency-free audio player for noVNC.",
   "main": "novnc-mediamtx-audio.js",
-  "author": "nagamuslim"
+  "author": "nagamuslim",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
