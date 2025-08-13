@@ -1,7 +1,1 @@
-{
-  "name": "novnc-audio-plugin",
-  "version": "1.0.1",
-  "description": "A robust, dependency-free audio player for noVNC.",
-  "main": "novnc-mediamtx-audio.js",
-  "author": "nagamuslim"
-}
+{"name": "novnc-audio-plugin","version": "3.0.0","description": "A robust, dependency-free audio player for noVNC, supporting MediaMTX/HLS.","main": "novnc-mediamtx-audio.js","files": ["novnc-mediamtx-audio.js"],"repository": {"type": "git","url": "https://github.com/nagamuslim/novnc-audio-plugin.git"},"keywords": ["novnc","audio","mediamtx","hls","plugin"],"author": "nagamuslim","license": "GPL-3.0-or-later"}
