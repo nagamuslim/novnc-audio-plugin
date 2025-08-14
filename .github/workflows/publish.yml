@@ -1,4 +1,4 @@
-name: Publish to npm and GPR
+name: Publish to npm
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-  # JOB 1: Publishes to the public NPM registry
   publish-npm:
     runs-on: ubuntu-latest
     permissions:
@@ -20,32 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          # This is the CORRECT URL for the public npm registry
           registry-url: 'https://registry.npmjs.org'
 
       - name: Publish to NPM
-        # This command uses trusted publishing (provenance) for security
         run: npm publish --provenance
-
-  # JOB 2: Publishes to the GitHub Package Registry (GPR)
-  publish-gpr:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write # Required to publish to GPR
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js for GPR
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          # This is the URL for the GitHub Package Registry
-          registry-url: 'https://npm.pkg.github.com'
-
-      - name: Publish to GitHub Package Registry
-        run: npm publish
-        env:
-          # This token is required and automatically provided by GitHub Actions
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
