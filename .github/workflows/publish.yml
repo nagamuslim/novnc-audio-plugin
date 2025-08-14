@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          # This is the corrected URL for the public npm registry
+          # This is the CORRECT URL for the public npm registry
           registry-url: 'https://registry.npmjs.org'
 
       - name: Publish to NPM
