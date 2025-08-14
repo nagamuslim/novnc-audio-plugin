@@ -1,18 +1,40 @@
-name: Publish to npm
+name: Publish to npm and GPR
 on:
   push:
     branches:
       - main
 jobs:
-  publish:
+  publish-npm:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup node for npm
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm publish --provenance
+      - name: Unscope package name
+        run: sed -i 's/@nagamuslim\///' package.json
+      - name: Publish to npm
+        run: npm publish --provenance
+
+  publish-gpr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node for GPR
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@nagamuslim'
+      - name: Publish to GPR
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
