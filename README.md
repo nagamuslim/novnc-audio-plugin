@@ -24,14 +24,19 @@ By default, the plugin will try to connect to the HLS stream at `/stream/index.m
 <script src="node_modules/novnc-audio-plugin/novnc-mediamtx-audio.js" defer></script>
 ```
 
-### Manual installation
+### Manual Installation
 
-Download novnc-mediamtx-audio.js
-Put in /usr/share/novnc(or your novnc installation location
-Then add this line in your scipt section before the head
-```html
-<script src="novnc-mediamtx-audio.js" defer></script>
-```
+1.  Download the `novnc-mediamtx-audio.js` file.
+    <br>
+    <a href="https://raw.githubusercontent.com/nagamuslim/novnc-audio-plugin/main/novnc-mediamtx-audio.js" download="novnc-mediamtx-audio.js">
+      <button>Download novnc-mediamtx-audio.js</button>
+    </a>
+2.  Place the downloaded file in your noVNC installation directory (e.g., `/usr/share/novnc`).
+3.  Add the following script tag to your HTML file, before the closing `</head>` tag:
+
+    ```html
+    <script src="novnc-mediamtx-audio.js" defer></script>
+    ```
 
 ### Custom Stream Path
 
