@@ -24,6 +24,15 @@ By default, the plugin will try to connect to the HLS stream at `/stream/index.m
 <script src="node_modules/novnc-audio-plugin/novnc-mediamtx-audio.js" defer></script>
 ```
 
+### Manual installation
+
+Download novnc-mediamtx-audio.js
+Put in /usr/share/novnc(or your novnc installation location
+Then add this line in your scipt section before the head
+```html
+<script src="novnc-mediamtx-audio.js" defer></script>
+```
+
 ### Custom Stream Path
 
 You can specify a custom HLS stream path using the `data-stream-path` attribute in the script tag.
