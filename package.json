@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nagamuslim/novnc-audio-plugin.git"
+    "url": "git+https://github.com/nagamuslim/novnc-audio-plugin.git"
   },
   "keywords": [
     "novnc",
