@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'The version to publish (e.g., 1.0.4)'
+        description: 'The version to publish (e.g., 1.0.6)'
         required: true
 
 permissions:
@@ -28,6 +28,9 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Show .npmrc file
+        run: cat ~/.npmrc
 
       - run: npm install
       
