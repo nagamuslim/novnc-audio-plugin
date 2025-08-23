@@ -17,9 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Add publishConfig to package.json
-        run: npm pkg set publishConfig.access=public
-
       - name: Bump version and create tag
         run: |
           git config --global user.name "github-actions[bot]"
@@ -36,7 +33,7 @@ jobs:
       
       - name: Publish to npm
         id: publish
-        run: npm publish
+        run: npm publish --access public
 
       - name: Delete tag on failure
         if: failure()
