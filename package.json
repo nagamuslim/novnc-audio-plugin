@@ -1,6 +1,6 @@
 {
   "name": "novnc-audio-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A robust, dependency-free audio player for noVNC, supporting MediaMTX/HLS.",
   "main": "novnc-mediamtx-audio.js",
   "files": [
