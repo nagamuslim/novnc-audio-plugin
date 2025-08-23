@@ -1,5 +1,5 @@
 {
-  "name": "@nagamuslim/novnc-audio-plugin",
+  "name": "novnc-audio-plugin",
   "version": "1.0.2",
   "description": "A robust, dependency-free audio player for noVNC, supporting MediaMTX/HLS.",
   "main": "novnc-mediamtx-audio.js",
