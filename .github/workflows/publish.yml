@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'The version to publish (e.g., 1.0.3)'
+        description: 'The version to publish (e.g., 1.0.4)'
         required: true
 
 permissions:
@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Add publishConfig to package.json
+        run: npm pkg set publishConfig.access=public
 
       - name: Bump version and create tag
         run: |
@@ -30,4 +33,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
-      - run: npm publish
+      
+      - name: Publish to npm
+        id: publish
+        run: npm publish
+
+      - name: Delete tag on failure
+        if: failure()
+        run: |
+          git push --delete origin v${{ github.event.inputs.version }}
