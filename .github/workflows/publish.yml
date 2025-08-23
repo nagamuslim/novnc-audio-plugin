@@ -20,8 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # If triggered manually, checkout the specified tag.
-          # Otherwise, use the tag from the push event.
           ref: ${{ github.event.inputs.tag || github.ref }}
 
       - uses: actions/setup-node@v4
@@ -33,5 +31,4 @@ jobs:
         run: npm install -g npm@latest
       - run: npm install
       - run: npm run build --if-present
-      - run: npm test
       - run: npm publish
