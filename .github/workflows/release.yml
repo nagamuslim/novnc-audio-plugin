@@ -16,6 +16,9 @@ on:
         - minor
         - major
 
+permissions:
+  contents: write # Allow to push to the repository
+
 jobs:
   release:
     runs-on: ubuntu-latest
