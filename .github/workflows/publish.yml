@@ -1,18 +1,15 @@
 name: Publish Package
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
     inputs:
-      tag:
-        description: 'The tag to create and publish (e.g., v1.0.3)'
+      version:
+        description: 'The version to publish (e.g., 1.0.3)'
         required: true
 
 permissions:
   id-token: write
-  contents: write # Added to allow the workflow to create tags
+  contents: write
 
 jobs:
   publish:
@@ -20,22 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create tag
-        if: github.event_name == 'workflow_dispatch'
+      - name: Bump version and create tag
         run: |
-          git tag ${{ github.event.inputs.tag }}
-          git push origin ${{ github.event.inputs.tag }}
-
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.tag || github.ref }}
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          npm version ${{ github.event.inputs.version }} -m "chore: release v${{ github.event.inputs.version }}"
+          git push --follow-tags
 
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Update npm
-        run: npm install -g npm@latest
       - run: npm install
       - run: npm publish
