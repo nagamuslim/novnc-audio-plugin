@@ -7,17 +7,25 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'The tag to publish (e.g., v1.0.4)'
+        description: 'The tag to create and publish (e.g., v1.0.3)'
         required: true
 
 permissions:
   id-token: write
-  contents: read
+  contents: write # Added to allow the workflow to create tags
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Create tag
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git tag ${{ github.event.inputs.tag }}
+          git push origin ${{ github.event.inputs.tag }}
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.tag || github.ref }}
@@ -30,5 +38,4 @@ jobs:
       - name: Update npm
         run: npm install -g npm@latest
       - run: npm install
-      - run: npm run build --if-present
       - run: npm publish
