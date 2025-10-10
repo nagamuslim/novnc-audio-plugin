@@ -43,18 +43,25 @@ To play standard Icecast streams, use the `novnc-icecast-audio.js` script. You m
 
 ### Manual Installation
 
-If you prefer not to use the CDN, you can download the script and host it yourself.
+If you prefer not to use the CDN, you can download the scripts from a specific release and host them yourself. This is the recommended way to ensure you are using a stable version.
 
-1.  Download the `novnc-mediamtx-audio.js` file.
+1.  Download the script for your streaming server:
     <br>
-    <a href="https://raw.githubusercontent.com/nagamuslim/novnc-audio-plugin/main/novnc-mediamtx-audio.js" download="novnc-mediamtx-audio.js">
-      <button>Download novnc-mediamtx-audio.js</button>
+    <a href="https://github.com/nagamuslim/novnc-audio-plugin/releases/download/v1.0.4/novnc-mediamtx-audio.js" download="novnc-mediamtx-audio.js">
+      <button>Download for MediaMTX (HLS)</button>
+    </a>
+    <a href="https://github.com/nagamuslim/novnc-audio-plugin/releases/download/v1.0.4/novnc-icecast-audio.js" download="novnc-icecast-audio.js">
+      <button>Download for Icecast</button>
     </a>
 2.  Place the downloaded file in your noVNC installation directory.
-3.  Add the following script tag to your HTML file:
+3.  Add the appropriate script tag to your HTML file:
 
     ```html
+    <!-- For MediaMTX -->
     <script src="novnc-mediamtx-audio.js" defer></script>
+
+    <!-- For Icecast -->
+    <script src="novnc-icecast-audio.js" defer></script>
     ```
 
 ### Installation for Developers (npm)
